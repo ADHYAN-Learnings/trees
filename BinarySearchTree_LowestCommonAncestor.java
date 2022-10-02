@@ -26,15 +26,11 @@ class BinarySearchTree_LowestCommonAncestor {
 	public static Node2 lca(Node2 root, int v1, int v2) {
 
 		if(root.data > v1 && root.data > v2 ) {
-			System.out.println("Inside:::First:::IF::::"+root.data);
 		  return lca(root.left,v1,v2);
 		}
 		 if(root.data < v1 && root.data < v2 ) {
-			 System.out.println("Inside:::Second:::IF::::"+root.data);
           return lca(root.right,v1,v2);
 		} 
-		 
-		 System.out.println("Inside:::Outside:::IF::::"+root.data);
 		return root;
     }
 

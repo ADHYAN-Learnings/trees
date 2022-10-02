@@ -2,6 +2,7 @@ package org.adhyan.hackerrank.trees;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class IsThisABinarySearchTree {
 
@@ -15,24 +16,9 @@ public class IsThisABinarySearchTree {
 	  int[] tree_data = Arrays.stream(scanner.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray(); 
 	  int length = tree_data.length;
 	  
-	  if(sorted(tree_data,length)!=0) {
-		  System.out.println("Yes");
-	  } else {
-		  System.out.println("No");
-	  }
+	  boolean isSorted = length==0?true:IntStream.range(0, length-1).noneMatch(i->tree_data[i]>=tree_data[i+1]);
+	  System.out.println(isSorted?"Yes":"No");
 			  
       scanner.close();
 	}
-
-	private static int sorted(int[] tree_data, int length) {
-		
-		if(length==1 || length==0) {
-			return 1;
-		}
-		if(tree_data[length-1] <= tree_data[length-2]) {
-			return 0;
-		}
-		return sorted(tree_data,length-1);
-	}
-
 }
